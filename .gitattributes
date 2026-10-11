@@ -1,0 +1,18 @@
+# ============================================
+# .gitattributes —— 统一换行符处理
+# ============================================
+# 说明：不同系统换行符不同（Linux/Mac 用 LF，Windows 用 CRLF）。
+# 这个文件告诉 Git：仓库里一律用 LF，检出到各平台也保持 LF，
+# 这样可以避免"LF will be replaced by CRLF"的警告，也避免跨平台协作时的换行符混乱。
+
+# 所有文本文件：自动识别 + 统一用 LF
+* text=auto eol=lf
+
+# 二进制文件：不做任何换行符转换
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.pdf  binary
+*.zip  binary
