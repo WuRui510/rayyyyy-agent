@@ -1,0 +1,32 @@
+# ---- 敏感信息----
+.env
+
+# ---- 个人笔记----
+开发笔记.md
+
+# ---- 对话历史数据----
+history.json
+data/
+
+# ---- Python 编译产物 ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- 虚拟环境 ----
+.venv/
+venv/
+env/
+
+# ---- 调试脚本----
+_test/
+
+# ---- 日志与临时文件 ----
+*.log
+*.tmp
+
+# ---- 系统生成的文件 ----
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
