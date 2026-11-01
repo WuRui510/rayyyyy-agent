@@ -1,0 +1,10 @@
+.env
+history.json
+__pycache__/
+*.pyc
+.pytest_cache/
+chroma_db/
+output/
+
+# TPC-H 生成的数据（约 95 MB），用 infra/tpch/gen_data.py 重新生成
+infra/tpch/data/

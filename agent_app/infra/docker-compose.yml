@@ -1,0 +1,32 @@
+# 数据库副本 —— Agent 只能操作这个容器里的库
+#
+# 起：  docker compose up -d
+# 停：  docker compose down
+# 清空：docker compose down -v   （⚠️ 会删掉所有数据）
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: agent_app_pg
+    # 跟随 Docker Desktop 自启；只有手动 docker compose stop 才会停
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent_dev_pw
+      POSTGRES_DB: tpch
+    ports:
+      # 用 55432，避开本机可能已占用的 5432
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # 只读挂载，容器内路径 /tpch。schema.sql 和 data/*.tbl 都在里面
+      - ./tpch:/tpch:ro
+    # 调大一点内存参数，让执行计划的差异更明显
+    command: >
+      postgres
+      -c shared_buffers=256MB
+      -c work_mem=64MB
+      -c random_page_cost=1.1
+
+volumes:
+  pgdata:
